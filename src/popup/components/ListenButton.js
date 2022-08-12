@@ -11,7 +11,6 @@ const playAudio = async (text, lang) => {
     text
   )}&tl=${lang}`;
   const audio = new Audio(url);
-  audio.crossOrigin = "anonymous";
   audio.load();
   await audio.play().catch(e => log.error(logDir, "playAudio()", e, url));
 };

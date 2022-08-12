@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { getSettings } from "src/settings/settings";
 import "../styles/TranslatePanel.scss";
+import ResultArea from "../../popup/components/ResultArea";
 
 const splitLine = text => {
   const regex = /(\n)/g;
@@ -17,7 +18,8 @@ export default class TranslatePanel extends Component {
       panelWidth: 0,
       panelHeight: 0,
       shouldResize: true,
-      isOverflow: false
+      isOverflow: false,
+      secondLang: getSettings("secondTargetLang")
     };
 
     this.dragOffsets = { x: 0, y: 0 };
@@ -195,12 +197,22 @@ export default class TranslatePanel extends Component {
         <div className="simple-translate-result-wrapper" ref="wrapper" style={wrapperStyles}>
           <div className="simple-translate-move" draggable="true" ref="move"></div>
           <div className="simple-translate-result-contents">
-            <p className="simple-translate-result" style={resultStyles} dir="auto">
-              {splitLine(resultText)}
-            </p>
-            <p className="simple-translate-candidate" style={candidateStyles} dir="auto">
-              {splitLine(candidateText)}
-            </p>
+            <ResultArea
+              inputText={selectedText}
+              targetLang={this.state.secondLang}
+              resultText={selectedText}
+              candidateText={""}
+              isError={isError}
+              errorMessage={errorMessage}
+            />
+            <ResultArea
+              inputText={selectedText}
+              targetLang={currentLang}
+              resultText={resultText}
+              candidateText={candidateText}
+              isError={isError}
+              errorMessage={errorMessage}
+            />
             {isError && (
               <p className="simple-translate-error" style={candidateStyles}>
                 {errorMessage}
