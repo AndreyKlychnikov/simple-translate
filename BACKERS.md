@@ -53,3 +53,6 @@ Thank you to the awesome backers who supported Simple Translate!
 - yh
 - Vladimir Chupin
 - john phillips
+- Macaroniseahorsedogkachu
+- John Franks
+- David Hajek ([@hdavid4444](https://mobile.twitter.com/hdavid4444))
